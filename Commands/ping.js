@@ -1,9 +1,14 @@
 export default {
   name: "ping",
-  description: "Cek bot aktif",
-  async execute(interaction) {
-    const sent = await interaction.reply({ content: "Pinging...", fetchReply: true });
-    const diff = sent.createdTimestamp - interaction.createdTimestamp;
-    interaction.editReply(`Pong! Latency: ${diff} ms`);
+  description: "Cek bot",
+  async execute(ctx) {
+    // SLASH COMMAND
+    if (ctx.reply) {
+      await ctx.reply("🏓 Pong!");
+    }
+    // PREFIX COMMAND
+    else {
+      await ctx.channel.send("🏓 Pong!");
+    }
   }
 };
